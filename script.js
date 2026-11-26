@@ -41,3 +41,9 @@ if(userGuess === randomNumber){
         lowOrHi.textContent = "the number was too high"
     }
 }
+
+guessSubmit.addEventListener("click", checkGuess)
+
+guessCount ++
+guessField.value = ""
+guessField.focus()
