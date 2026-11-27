@@ -8,8 +8,8 @@ const lastResult = document.querySelector(".lastResult")
 const lowOrHi = document.querySelector(".lowOrHi")
 
 
-const guessSubmit = document.querySelector("guessSubmit")
-const guessField = document.querySelector("guessField")
+const guessSubmit = document.querySelector(".guessSubmit")
+const guessField = document.querySelector(".guessField")
 
 //set the guesscount to one cause its start from 1 to ... 100
 let guessCount = 1
@@ -17,13 +17,12 @@ let ResetButton
 
 function checkGuess (){
     const userGuess = Number(guessField.value)
-    if(guessCount === 0) {
+    if(guessCount === 1) {
         guesses.textContent = "Previous guesses:"
     }
     guesses.textContent = `${guesses.textContent} ${userGuess}`
-}
 
-if(userGuess === randomNumber){
+    if(userGuess === randomNumber){
     lastResult.textContent = "Congratulation! You got it right"
     lastResult.style.backgroundColor = "green"
     lowOrHi.textContent = ""
@@ -42,8 +41,19 @@ if(userGuess === randomNumber){
     }
 }
 
-guessSubmit.addEventListener("click", checkGuess)
-
 guessCount ++
 guessField.value = ""
 guessField.focus()
+}
+
+guessSubmit.addEventListener("click", checkGuess)
+
+function setGameOver (){
+    //disable is to avoid user from submitting more guesses
+    guessField.disable = true
+    guessSubmit.disable = true
+    resetButton = document.createElement("button")
+    resetButton.textContent = "Start new game"
+    document.body.append(resetButton)
+    resetButton.addEventListener("click", resetGame)
+}
