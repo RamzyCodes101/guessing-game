@@ -13,7 +13,7 @@ const guessField = document.querySelector(".guessField")
 
 //set the guesscount to one cause its start from 1 to ... 100
 let guessCount = 1
-let ResetButton
+let resetButton
 
 function checkGuess (){
     const userGuess = Number(guessField.value)
@@ -61,7 +61,7 @@ function setGameOver (){
 function resetGame(){
     guessCount = 1
 
-    const resetParas = document.querySelector(".resultParas p")
+    const resetParas = document.querySelectorAll(".resultParas p")
     for(const resetPara of resetParas) {
         resetPara.textContent = ""
     }
